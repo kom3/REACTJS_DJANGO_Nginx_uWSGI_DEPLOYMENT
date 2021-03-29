@@ -1,0 +1,3 @@
+uWSGI ini file path:  /etc/uwsgi/sites/djangoreact.ini
+nginx config file path: /etc/nginx/sites-available/djangoreact
+uWSGI service file path: /etc/systemd/system/uwsgi.service

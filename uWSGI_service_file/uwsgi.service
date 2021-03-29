@@ -1,0 +1,15 @@
+[Unit]
+Description=uWSGI Emperor service
+
+[Service]
+#setting required permissions for project folder
+ExecStartPre=/bin/bash -c 'mkdir -p /home/ko/REACTJS_DJANGO_APACHE_DEPLOYMENT; chown ko:www-data /home/ko/REACTJS_DJANGO_APACHE_DEPLOYMENT'
+ExecStart=/usr/local/bin/uwsgi --emperor /etc/uwsgi/sites
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+
+[Install]
+WantedBy=multi-user.target

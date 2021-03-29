@@ -1,0 +1,15 @@
+server {
+    listen 8090;
+    server_name djangoreact.com www.djangoreact.com;
+
+    location = /home/ko/REACTJS_DJANGO_APACHE_DEPLOYMENT/Reactapp/myapp/build/favicon.ico { access_log off; log_not_found off; }
+    location / {
+        root /home/ko/REACTJS_DJANGO_APACHE_DEPLOYMENT/Reactapp/myapp/build;
+    }
+
+    location /api/ {
+	alias /;
+        include         uwsgi_params;
+        uwsgi_pass      unix:/home/ko/REACTJS_DJANGO_APACHE_DEPLOYMENT/djangoserver/djangoserver/djangoserver.sock;
+    }
+}
