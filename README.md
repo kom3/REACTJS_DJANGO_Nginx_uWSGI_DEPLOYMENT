@@ -4,8 +4,7 @@
 
 ### Note:  we have mentioned 'least_conn' in 'upstream', so the server instance with least connections will be used to process the request (when new request arrives).
 
-`
-upstream backend {
+`upstream backend {
   least_conn;
   server django-uwsgi_0:7001;
 	server django-uwsgi_1:7002;
@@ -68,14 +67,12 @@ server {
     location /djangostatic {
         alias /var/www/docker_installer/frontend/build/django/static;
     }
-}
-`
+}`
 
 
 ## nginx configuration file for single backend server
 
-`
-server {
+`server {
     listen 8090;
     server_name djangoreact.com www.djangoreact.com;
     location = /home/ko/REACTJS_DJANGO_APACHE_DEPLOYMENT/Reactapp/myapp/build/favicon.ico { access_log off; log_not_found off; }
@@ -88,5 +85,4 @@ server {
         include         uwsgi_params;
         uwsgi_pass      unix:/home/ko/REACTJS_DJANGO_APACHE_DEPLOYMENT/djangoserver/djangoserver/djangoserver.sock;
     }
-}
-`
+}`
