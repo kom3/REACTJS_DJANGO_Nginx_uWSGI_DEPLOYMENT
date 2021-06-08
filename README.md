@@ -1,11 +1,10 @@
 # REACTJS_DJANGO_Nginx_uWSGI_DEPLOYMENT
 
-### nginx configuration file for multiple backend server instances
+## nginx configuration file for multiple backend server instances
 
-### **Note:  we have mentioned 'least_conn' in 'upstream', so the server instance with least connections will be used to process the request (when new request arrives).
+### Note:  we have mentioned 'least_conn' in 'upstream', so the server instance with least connections will be used to process the request (when new request arrives).
 
 `
-
 upstream backend {
   least_conn;
   server django-uwsgi_0:7001;
@@ -69,46 +68,25 @@ server {
     location /djangostatic {
         alias /var/www/docker_installer/frontend/build/django/static;
     }
-
-
-
-
 }
-
 `
 
 
-### nginx configuration file for single backend server
+## nginx configuration file for single backend server
 
 `
-
 server {
     listen 8090;
     server_name djangoreact.com www.djangoreact.com;
-
     location = /home/ko/REACTJS_DJANGO_APACHE_DEPLOYMENT/Reactapp/myapp/build/favicon.ico { access_log off; log_not_found off; }
     location / {
         root /home/ko/REACTJS_DJANGO_APACHE_DEPLOYMENT/Reactapp/myapp/build;
     }
-
+    
     location /api/ {
 	alias /;
         include         uwsgi_params;
         uwsgi_pass      unix:/home/ko/REACTJS_DJANGO_APACHE_DEPLOYMENT/djangoserver/djangoserver/djangoserver.sock;
     }
 }
-
-
 `
-
-
-
-
-
-
-
-
-
-
-
-
