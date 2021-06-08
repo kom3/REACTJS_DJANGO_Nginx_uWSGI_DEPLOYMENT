@@ -72,7 +72,7 @@ server {
 ```
 
 
-## nginx configuration file for single backend server
+## nginx configuration file for single backend server instance
 
 ```
 server {
