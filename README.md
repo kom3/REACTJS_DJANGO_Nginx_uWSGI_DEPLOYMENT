@@ -5,8 +5,8 @@
 ### Note:  we have mentioned 'least_conn' in 'upstream', so the server instance with least connections will be used to process the request (when new request arrives).
 
 `upstream backend {
-  least_conn;
-  server django-uwsgi_0:7001;
+  	least_conn;
+  	server django-uwsgi_0:7001;
 	server django-uwsgi_1:7002;
 	server django-uwsgi_2:7003;
 	server django-uwsgi_3:7004;
